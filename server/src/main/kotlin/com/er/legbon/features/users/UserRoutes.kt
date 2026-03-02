@@ -1,7 +1,8 @@
+/*
 package com.er.legbon.features.users
 
 import com.er.legbon.auth.TokenManager
-import io.ktor.server.application.*
+import io.ktor.server.application.* 
 import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
@@ -15,6 +16,11 @@ fun Application.userRoutes() {
 
     routing {
         route("/users") {
+            get {
+                val users = userDao.getAllUsers()
+                call.respond(users)
+            }
+
             post("/register") {
                 val registerRequest = call.receive<RegisterRequest>()
                 val hashedPassword = BCrypt.hashpw(registerRequest.password, BCrypt.gensalt())
@@ -38,4 +44,4 @@ fun Application.userRoutes() {
             }
         }
     }
-}
+}*/

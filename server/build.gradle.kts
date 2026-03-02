@@ -6,6 +6,7 @@ plugins {
 
 group = "com.er.legbon"
 version = "1.0.0"
+
 application {
     mainClass.set("com.er.legbon.ApplicationKt")
 
@@ -14,21 +15,33 @@ application {
 }
 
 dependencies {
+    // Project Modules
     implementation(projects.shared)
-    implementation(libs.logback)
-    implementation(libs.ktor.server.core)
-    implementation(libs.ktor.server.netty)
-    implementation(libs.ktor.server.content.negotiation)
+
+    // Ktor Server
     implementation(libs.ktor.serialization.kotlinx.json)
     implementation(libs.ktor.server.auth)
     implementation(libs.ktor.server.auth.jwt)
     implementation(libs.ktor.server.call.logging)
+    implementation(libs.ktor.server.content.negotiation)
+    implementation(libs.ktor.server.core)
+    implementation(libs.ktor.server.netty)
+
+    // Exposed ORM
     implementation(libs.exposed.core)
     implementation(libs.exposed.dao)
     implementation(libs.exposed.jdbc)
+    implementation(libs.exposed.datetime)
+
+    // Database & Connection Pooling
     implementation(libs.hikaricp)
     implementation(libs.postgresql)
+
+    // Utilities
     implementation(libs.jbcrypt)
-    testImplementation(libs.ktor.server.test.host)
+    implementation(libs.logback)
+
+    // Testing
     testImplementation(libs.kotlin.testJunit)
+    testImplementation(libs.ktor.server.test.host)
 }

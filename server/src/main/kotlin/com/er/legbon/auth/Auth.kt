@@ -10,7 +10,6 @@ import io.ktor.server.auth.jwt.jwt
 import io.ktor.server.response.*
 
 fun Application.configureAuth() {
-
     val secret = environment.config.property("jwt.secret").getString()
     val issuer = environment.config.property("jwt.issuer").getString()
     val audience = environment.config.property("jwt.audience").getString()
