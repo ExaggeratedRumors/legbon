@@ -11,10 +11,10 @@ class DatabaseConnectionTest {
     @Test
     fun `test connection to postgresql`() {
         try {
-            DatabaseFactory.init()
+            DatabaseBuilder.build()
 
             transaction {
-                val url = connection.metadata { url }
+                val url = connection.metadata { this.url }
                 assertNotNull(url)
                 logger.info("Successfully connected to: {}", url)
 
